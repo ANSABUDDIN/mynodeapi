@@ -3,7 +3,7 @@
 const con = mysql.createConnection({
     host: 'sql.freedb.tech',
     user: 'freedb_ansab',
-    password: 'P@y68zvw?C%c3nD',
+    password: 'D8P7mvNSbt6Ev@y',
     database: "freedb_marketplace_db"
     // host: process.env.DB_HOST,
     // user: process.env.DB_USERNAME,
