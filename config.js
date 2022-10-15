@@ -1,14 +1,14 @@
  import mysql from 'mysql'
 
 const con = mysql.createConnection({
-    host: 'sql.freedb.tech',
-    user: 'freedb_ansab',
-    password: 'D8P7mvNSbt6Ev@y',
-    database: "freedb_marketplace_db"
-    // host: process.env.DB_HOST,
-    // user: process.env.DB_USERNAME,
-    // password: process.env.DB_PASSWORD,
-    // database: process.env.DB_DBNAME
+    host: '162.144.5.104',
+    user: 'webliion_nextmar',
+    password: 'OcRE409;rTvM',
+    database: "webliion_marketplace"
+    // host: 'localhost',
+    // user: 'root',
+    // password: '',
+    // database: 'marketplace'
 
 });
 con.connect((err) => {
