@@ -3,14 +3,13 @@ import con from './config.js'
 import Jwt from 'jsonwebtoken';
 import cors from 'cors';
 import pkg from 'bcryptjs';
-
-
+import bodyParser from 'body-parser';
 
 const app = express()
 const { hashSync, genSaltSync, compareSync } = pkg;
 app.use(express.json());
 app.use(cors());
-
+app.use(bodyParser.json());
 
 
 
@@ -35,13 +34,14 @@ app.get('/get', (req, resp) => {
 
 // Register api
 
-app.post('/register', (req, resp) => {
-
+app.post('/register', (req, resp ,next) => {
+    console.log(req.body);
     const data = {
         "username": req.body.username,
         "email": req.body.email,
         "password": req.body.password,
     }
+    console.log("data is post" , data )
     const salt = genSaltSync(10);
     data.password = hashSync(data.password, salt);
     con.query(`select * from users where email = '${data.email}'`, (error, result, field) => {
@@ -53,6 +53,7 @@ app.post('/register', (req, resp) => {
                     resp.status(200).send({
                         msg: "Register Successfull"
                     });
+                    
                 }
             });
         } else {
@@ -129,7 +130,7 @@ app.post('/forget', (req, resp) => {
 
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 1029;
 app.listen(PORT, () => {
     console.log(`your Port is ${PORT}`)
 })
