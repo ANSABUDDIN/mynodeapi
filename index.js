@@ -1,7 +1,7 @@
 import express from 'express';
 import con from './config.js'
 import Jwt from 'jsonwebtoken';
-import cors from 'cors'
+import cors from 'cors';
 import pkg from 'bcryptjs';
 
 
@@ -16,8 +16,13 @@ app.use(cors());
 
 
 // get all users
-
-app.get('/', (req, resp) => {
+app.get('/', (req, res) => {
+    res
+      .status(200)
+      .send('Hello server is running')
+      .end();
+  });
+app.get('/get', (req, resp) => {
     con.query("select * from users", (err, result) => {
         if (err) {
             resp.send("error")
@@ -124,7 +129,7 @@ app.post('/forget', (req, resp) => {
 
 
 
-
-app.listen(5000, () => {
-    console.log("your Port is 5000")
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+    console.log(`your Port is ${PORT}`)
 })
