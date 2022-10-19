@@ -1,7 +1,7 @@
  import mysql from 'mysql'
 
 const con = mysql.createConnection({
-    host: '162.144.5.104',
+    host: 'gator3193.hostgator.com',
     user: 'webliion_nextmar',
     password: 'OcRE409;rTvM',
     database: "webliion_marketplace"
