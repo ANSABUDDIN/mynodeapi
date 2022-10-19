@@ -9,7 +9,10 @@ const con = mysql.createConnection({
     // user: 'root',
     // password: '',
     // database: 'marketplace'
-
+    // host: 'sql.freedb.tech',
+    // user: 'freedb_weblinx',
+    // password: '8H$*Y@Fz&YW4zdt',
+    // database: 'freedb_market_next'
 });
 con.connect((err) => {
     if (err) {

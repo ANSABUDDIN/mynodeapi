@@ -22,7 +22,7 @@ app.get('/', (req, res) => {
       .end();
   });
 app.get('/get', (req, resp) => {
-    con.query("select * from users", (err, result) => {
+    con.query("select * from user", (err, result) => {
         if (err) {
             resp.send("error")
         }
@@ -35,18 +35,18 @@ app.get('/get', (req, resp) => {
 // Register api
 
 app.post('/register', (req, resp ,next) => {
-    console.log(req.body);
+    // console.log(req.body);
     const data = {
         "username": req.body.username,
         "email": req.body.email,
         "password": req.body.password,
     }
-    console.log("data is post" , data )
+    // console.log("data is post" , data )
     const salt = genSaltSync(10);
     data.password = hashSync(data.password, salt);
-    con.query(`select * from users where email = '${data.email}'`, (error, result, field) => {
+    con.query(`select * from user where email = '${data.email}'`, (error, result, field) => {
         if (result.length == 0) {
-            con.query('INSERT INTO users SET ?', data, (error, result, field) => {
+            con.query('INSERT INTO user SET ?', data, (error, result, field) => {
                 if (error) {
                     console.log(error)
                 } else {
@@ -75,7 +75,7 @@ app.post('/login', (req, resp) => {
         "email": req.body.email,
         "password": req.body.password,
     }
-    con.query(`select * from users where email = '${req.body.email}'`, (error, result, field) => {
+    con.query(`select * from user where email = '${req.body.email}'`, (error, result, field) => {
         if (result.length == 0) {
             resp.status(500).send({
                 msg: "Email Incorrect"
@@ -109,7 +109,7 @@ app.post('/forget', (req, resp) => {
         "email": req.body.email
 
     }
-    con.query(`select * from users where email = '${req.body.email}'`, (error, result, field) => {
+    con.query(`select * from user where email = '${req.body.email}'`, (error, result, field) => {
         if (result.length == 0) {
             resp.status(500).send({
                 msg: "Email Incorrect"
@@ -132,5 +132,5 @@ app.post('/forget', (req, resp) => {
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-    console.log(`your Port e;245 is ${PORT}`)
+    console.log(`your Port  is ${PORT}`)
 })
