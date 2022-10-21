@@ -4,7 +4,7 @@ import Jwt from 'jsonwebtoken';
 import cors from 'cors';
 import pkg from 'bcryptjs';
 import bodyParser from 'body-parser';
-
+import './config.js';
 const app = express()
 const { hashSync, genSaltSync, compareSync } = pkg;
 app.use(express.json());

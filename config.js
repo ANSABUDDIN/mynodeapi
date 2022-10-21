@@ -1,7 +1,7 @@
  import mysql from 'mysql'
 
 const con = mysql.createConnection({
-    host: 'ns6385.hostgator.com',
+    host: '198.57.247.157',
     user: 'webliion_nextmar',
     password: 'OcRE409;rTvM',
     database: "webliion_marketplace"
@@ -17,6 +17,9 @@ const con = mysql.createConnection({
 con.connect((err) => {
     if (err) {
         console.warn("error in connection")
+    }else{
+        console.warn("connection succ")
+
     }
 });
 export default con;
